@@ -10,14 +10,21 @@
 </head>
 <body>
     <canvas></canvas>
+
+    <img hidden id="sprite" src="./img/sprite.png" alt="Sprite Arkanoid"/>
+    <img hidden id="bricks" src="./img/bricks.png" alt="Sprite bricks Arkanoid"/>
+
     <script>
         const canvas = document.querySelector("canvas")
         const ctx = canvas.getContext("2d")//2d rendering context
 
+        const $sprite = document.querySelector('#sprite')
+        const $bricks = document.querySelector('#bricks')
+
         canvas.width = 448;
         canvas.height = 400;
         /*Variables del juego*/
-      
+
 
         /*VARIABLES DE LA PELOTA*/
         const ballRadius =3;
@@ -58,13 +65,20 @@
         }
 
         function drawPaddle(){
-            ctx.fillRect(
-                paddleX, //coordenada x
-                paddleY, //coordena y
+            ctx.drawImage(
+                $sprite,//imagen
+                29,//clipX: coordenadas de recorte
+                174,//clipY: coordenadas de recorte
+                paddleWidth,// tamaño del recorte
+                paddleHeight,// tamaño del recorte
+                paddleX, //posición x del dibujo
+                paddleY, //posición y del dibujo
                 paddleWidth, //ancho del dibujo
-                paddleHeight //alto del dibujo
+                paddleHeight, //alto del dibujo
+                
             )
         }
+
 
         function drawBricks(){}
 
